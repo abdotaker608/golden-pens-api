@@ -28,7 +28,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['goldenpens.herokuapp.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -184,7 +183,7 @@ else:
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
-DEFAULT_FROM_EMAIL = 'Golden Pens'
+DEFAULT_FROM_EMAIL = 'goldenpensapp@gmail.com'
 
 # Storage Configs
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
