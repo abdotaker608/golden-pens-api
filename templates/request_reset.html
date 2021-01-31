@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: rgb(240, 236, 236);
+        }
+        .container{
+            margin:100px auto;
+            padding: 30px 50px;
+            text-align: center;
+            background: white;
+            border-radius: 5px;
+        }
+        button{
+            background: rgb(49, 115, 202);
+            color: white;
+            padding: 15px 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: 150ms ease-out;
+        }
+        button:hover{
+            background: rgb(25, 82, 156);
+        }
+        p{
+            margin-top: 60px;
+            color: grey;
+        }
+        @media screen and (min-width: 576px){
+            .container{
+                width: 70%;
+            }
+            .container{
+                text-align: start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <h1>You requested a password reset to your account!</h1>
+        <a href='{{link}}' title='Verification Link'><button>Reset My Password</button></a>
+        <p>
+            If you believe this is a mistake, We suggest that you secure your account!
+        </p>
+    </div>
+</body>
+</html>
