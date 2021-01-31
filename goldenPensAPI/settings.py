@@ -185,6 +185,8 @@ else:
     EMAIL_USE_TLS = True
 
 DEFAULT_FROM_EMAIL = 'goldenpensapp@gmail.com'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+EMAIL_SUBJECT_PREFIX = '[GP-Admin] '
 
 # Storage Configs
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
