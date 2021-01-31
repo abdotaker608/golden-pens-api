@@ -79,9 +79,9 @@ def authenticate_jwt(request):
 def login_user(request):
     email = request.data['email']
     password = request.data.get('password')
-    with_provider = request.data.get('withProvider')
+    with_provider = request.data.pop('withProvider')
 
-    if with_provider is True:
+    if with_provider:
         try:
             user = User.objects.get(email=email)
             if not user.with_provider():
@@ -91,7 +91,6 @@ def login_user(request):
             serializer = UserSerializer(user)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         except ObjectDoesNotExist:
-            request.data.pop('withProvider')
             user = User.objects.create_user(**request.data)
             user.last_login = timezone.now()
             user.email_verified = True

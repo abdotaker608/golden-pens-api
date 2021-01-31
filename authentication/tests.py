@@ -266,7 +266,7 @@ class AuthLogin(APITestCase):
         user = User.objects.create_user(**classic_register_data)
         user.email_verified = True
         user.save()
-        login_data = {'email': user.email, 'password': classic_register_data['password']}
+        login_data = {'email': user.email, 'password': classic_register_data['password'], 'withProvider': False}
         response = self.client.post(reverse('authentication:login_user'), login_data, format='json')
         self.assertEqual(response.status_code, 200)
 
@@ -275,16 +275,16 @@ class AuthLogin(APITestCase):
             **classic_register_data,
             'social_id': '1234-1234',
             'social_picture': 'http://pic_url/',
-            'password': None
+            'password': None,
         }
         user = User.objects.create_user(**register_data)
-        login_data = {'email': user.email, 'password': None}
+        login_data = {'email': user.email, 'password': None, 'withProvider': False}
         response = self.client.post(reverse('authentication:login_user'), login_data, format='json')
         self.assertEqual(response.status_code, 401)
 
     def test_denies_login_when_email_not_verified(self):
         user = User.objects.create_user(**classic_register_data)
-        login_data = {'email': user.email, 'password': classic_register_data['password']}
+        login_data = {'email': user.email, 'password': classic_register_data['password'], 'withProvider': False}
         response = self.client.post(reverse('authentication:login_user'), login_data, format='json')
         self.assertFalse(user.email_verified)
         self.assertEqual(response.status_code, 403)
@@ -294,14 +294,14 @@ class AuthLogin(APITestCase):
         user.email_verified = True
         user.is_active = False
         user.save()
-        login_data = {'email': user.email, 'password': classic_register_data['password']}
+        login_data = {'email': user.email, 'password': classic_register_data['password'], 'withProvider': False}
         response = self.client.post(reverse('authentication:login_user'), login_data, format='json')
         self.assertEqual(response.status_code, 403)
 
     def test_limits_login_attempts(self):
         from django.core.cache import cache
         throttling_rate = 30
-        login_data = {'email': 'email@example.com', 'password': '1234'}
+        login_data = {'email': 'email@example.com', 'password': '1234', 'withProvider': False}
         for attempt in range(throttling_rate):
             self.client.post(reverse('authentication:login_user'), login_data, format='json')
         response = self.client.post(reverse('authentication:login_user'), login_data, format='json')
