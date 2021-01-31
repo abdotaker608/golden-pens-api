@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from django.contrib.postgres.fields import ArrayField
 from .managers import StoryManager
 import os
+from django.contrib.postgres.indexes import GinIndex
 
 
 def get_path(instance, *args):
@@ -40,6 +41,7 @@ class Story(models.Model):
 
     class Meta:
         verbose_name_plural = 'stories'
+        indexes = [GinIndex(fields=['title', 'category', 'tags'])]
 
     def __str__(self):
         return self.title

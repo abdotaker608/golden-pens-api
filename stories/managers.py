@@ -13,16 +13,16 @@ class StoryManager(models.Manager):
 
         queryset = self.model.objects.all()
 
-        if author_id:
+        if author_id is not None:
             queryset = queryset.filter(author__pk=author_id)
 
-        if follower_pk:
+        if follower_pk is not None:
             queryset = queryset.filter(author__followers__pk=follower_pk)
 
-        if cat:
+        if cat is not None:
             queryset = queryset.filter(category=cat)
 
-        if search or sub_cat:
+        if search is not None or sub_cat is not None:
 
             query_conditions = Q(similarity__gte=0.1) | Q(name_similarity__gte=0.1)
 
@@ -30,9 +30,9 @@ class StoryManager(models.Manager):
                 query_conditions |= Q(category__trigram_similar=search)
 
             for i in range(30):
-                if search:
+                if search is not None:
                     query_conditions |= Q(**{f'tags__{i}__trigram_similar': search})
-                if sub_cat:
+                if sub_cat is not None:
                     query_conditions |= Q(**{f'tags__{i}__trigram_similar': sub_cat}) |\
                                         Q(**{f'tags__{i}__trigram_similar': unquote(u"%s" % sub_cat_ar)})
 
@@ -47,7 +47,7 @@ class StoryManager(models.Manager):
                 )).filter(query_conditions)
 
         if sort == 'relevance':
-            if search or sub_cat:
+            if search is not None or sub_cat is not None:
                 queryset = queryset.order_by('-similarity', '-name_similarity')
             else:
                 queryset = queryset.order_by('-created')
