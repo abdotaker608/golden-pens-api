@@ -11,4 +11,5 @@ Pillow==7.0.0
 psycopg2==2.8.6
 PyJWT==1.7.1
 pytz==2019.3
+pytzdata==2019.3
 whitenoise==5.1.0
