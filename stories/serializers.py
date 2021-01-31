@@ -26,7 +26,7 @@ class StoryAdvSerializer(ModelSerializer):
     author = AuthorSimpleSerializer()
 
     class Meta:
-        fields = ['id', 'cover', 'title', 'created', 'author']
+        fields = ['id', 'title', 'created', 'author']
         model = Story
 
 
