@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY', 'foo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['goldenpens.herokuapp.com']
 
 # Application definition
 
@@ -142,10 +142,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # CORS configs
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
 
 
 # DRF Default Settings
@@ -186,7 +185,7 @@ else:
 
 DEFAULT_FROM_EMAIL = 'goldenpensapp@gmail.com'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-EMAIL_SUBJECT_PREFIX = ' '
+EMAIL_SUBJECT_PREFIX = ''
 
 # Storage Configs
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
