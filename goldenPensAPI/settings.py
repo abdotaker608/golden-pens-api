@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY', 'foo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['goldenpens.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -186,7 +186,7 @@ else:
 
 DEFAULT_FROM_EMAIL = 'goldenpensapp@gmail.com'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-EMAIL_SUBJECT_PREFIX = ''
+EMAIL_SUBJECT_PREFIX = ' '
 
 # Storage Configs
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
