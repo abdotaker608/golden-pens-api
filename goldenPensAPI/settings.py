@@ -142,10 +142,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # CORS configs
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'https://determined-colden-c322cd.netlify.app',
+]
 
 
 # DRF Default Settings
@@ -189,12 +188,18 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_SUBJECT_PREFIX = ''
 
 # Storage Configs
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = os.getenv('DROPBOX_AUTH_TOKEN')
-DROPBOX_WRITE_MODE = 'overwrite'
+# DROP BOX
+# DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# DROPBOX_OAUTH2_TOKEN = os.getenv('DROPBOX_AUTH_TOKEN')
+# DROPBOX_WRITE_MODE = 'overwrite'
+# AWS S3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS')
+AWS_STORAGE_BUCKET_NAME = 'golden-pens-storage'
 
 # Custom Configs
-CURRENT_FRONTEND_HOST = 'http://localhost:3000'
+CURRENT_FRONTEND_HOST = 'https://determined-colden-c322cd.netlify.app'
 
 # Admins Config
 ADMINS = [('Eldababa', 'abdotaker608@gmail.com')]

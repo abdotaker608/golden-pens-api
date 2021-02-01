@@ -9,9 +9,9 @@ import os
 from django.contrib.postgres.indexes import GinIndex
 
 
-def get_path(instance, *args):
+def get_path(instance, filename, *args):
     path = 'Story Covers'
-    name = f'{instance.id}_story_cover'
+    name = f'{instance.id}_story_cover.{filename.split(".")[1]}'
     return os.path.join(path, name)
 
 
