@@ -73,6 +73,12 @@ class Chapter(models.Model):
     def __str__(self):
         return self.title
 
+    def loves_count(self):
+        return self.loves.count()
+
+    def views_count(self):
+        return self.views.count()
+
     def next(self):
         chapter = self.story.chapters.filter(number=self.number+1)
         if chapter.exists():

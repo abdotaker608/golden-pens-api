@@ -13,8 +13,8 @@ urlpatterns = [
     path('update_user/<int:pk>', views.update_user, name='update_user'),
     path('update_author/<int:pk>', views.update_author, name='update_author'),
     path('update_security/<int:pk>', views.update_security, name='update_security'),
-    path('authors', views.AuthorsListView.as_view(), name='authors'),
-    path('profile/<int:pk>', views.UserProfileView.as_view(), name='profile'),
+    path('authors', views.authors_list, name='authors'),
+    path('profile/<int:pk>', views.user_profile, name='profile'),
     path('profile/media', views.update_media, name='update_media'),
     path('delete/<int:pk>', views.delete_user, name='delete')
 ]

@@ -49,6 +49,7 @@ class ReplyCreationSerializer(ModelSerializer):
 class AuthorSerializer(ModelSerializer):
 
     user = UserSerializer()
+    followers = ReadOnlyField(source='followers_count')
 
     class Meta:
         fields = '__all__'
@@ -96,9 +97,10 @@ class ChapterSerializer(ModelSerializer):
     story = StorySerializer()
     next = ReadOnlyField()
     prev = ReadOnlyField()
+    loves = ReadOnlyField(source='loves_count')
 
     class Meta:
-        fields = '__all__'
+        exclude = ['views']
         model = Chapter
 
 

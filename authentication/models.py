@@ -87,3 +87,6 @@ class Author(models.Model):
 
     def stories_no(self):
         return self.stories.count()
+
+    def followers_count(self):
+        return self.followers.count()

@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'foo')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['goldenpens.herokuapp.com']
+ALLOWED_HOSTS = DEBUG and ['localhost', '127.0.0.1'] or ['goldenpens.herokuapp.com']
 
 # Application definition
 
@@ -145,6 +145,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ALLOWED_ORIGINS = [
     'https://determined-colden-c322cd.netlify.app',
 ]
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
 
 
 # DRF Default Settings
@@ -188,20 +190,24 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_SUBJECT_PREFIX = ''
 
 # Storage Configs
-# DROP BOX
-# DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-# DROPBOX_OAUTH2_TOKEN = os.getenv('DROPBOX_AUTH_TOKEN')
-# DROPBOX_WRITE_MODE = 'overwrite'
-# AWS S3
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS')
-AWS_STORAGE_BUCKET_NAME = 'golden-pens-storage'
-AWS_QUERYSTRING_AUTH = False
-AWS_QUERYSTRING_EXPIRE = False
+if not DEBUG:
+    # DROP BOX
+    # DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+    # DROPBOX_OAUTH2_TOKEN = os.getenv('DROPBOX_AUTH_TOKEN')
+    # DROPBOX_WRITE_MODE = 'overwrite'
+
+    # AWS S3
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS')
+    AWS_STORAGE_BUCKET_NAME = 'golden-pens-storage'
+    AWS_QUERYSTRING_AUTH = False
+    AWS_QUERYSTRING_EXPIRE = False
 
 # Custom Configs
-CURRENT_FRONTEND_HOST = 'https://determined-colden-c322cd.netlify.app'
+PROD_HOST = 'https://determined-colden-c322cd.netlify.app'
+LOCAL_HOST = 'http://localhost:3000'
+CURRENT_FRONTEND_HOST = DEBUG and PROD_HOST or LOCAL_HOST
 
 # Admins Config
 ADMINS = [('Eldababa', 'abdotaker608@gmail.com')]

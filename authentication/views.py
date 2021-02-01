@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view, authentication_classes, permission_classes, throttle_classes
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework.response import Response
-from rest_framework import status, generics, mixins
+from rest_framework import status
 from django.core.mail import send_mail
 from .models import User, Author
 from .serializers import UserSerializer
@@ -16,9 +16,9 @@ from smtplib import SMTPException
 from .serializers import AuthorSimpleSerializer, UserProfileSerializer
 from django.db.models import Count, Value
 from django.db.models.functions import Greatest, Concat
-from .pagination import AuthorsPaginator
 from django.contrib.postgres.search import TrigramSimilarity
 import re
+from django.db.models import Q
 
 
 @api_view(['POST'])
@@ -272,34 +272,47 @@ def update_security(request, pk):
     return Response({"message": "incorrectPassword", "status": 401}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-class AuthorsListView(generics.GenericAPIView, mixins.ListModelMixin):
-    serializer_class = AuthorSimpleSerializer
-    queryset = Author.objects.annotate(top=Count('followers'), stories_no=Count('stories')). \
-        filter(stories_no__gte=1).order_by('-top')
-    permission_classes = []
-    authentication_classes = []
-    pagination_class = AuthorsPaginator
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def authors_list(request):
+    user_pk = request.GET.get('user')
+    search = request.GET.get('search')
+    page = int(request.GET.get('p') or 1)
+    size = 20
+    if search is not None:
+        queryset = Author.objects.annotate(fullname=Concat('user__first_name', Value(' '), 'user__last_name'),
+                                           similarity=Greatest(
+                                               TrigramSimilarity('fullname', search),
+                                               TrigramSimilarity('nickname', search)
+                                           ), stories_no=Count('stories')). \
+                       filter(Q(similarity__gte=0.1) & Q(stories_no__gte=1)).order_by('-similarity')[
+                   (page - 1) * size:page * size]
+    else:
+        queryset = Author.objects.annotate(top=Count('followers'), stories_no=Count('stories')). \
+                       filter(stories_no__gte=1).order_by('-top')[(page - 1) * size:page * size]
+    count = Author.objects.count()
+    total = count % size == 0 and count // size or (count // size) + 1
+    response = {'total': total, 'results': []}
+    for record in queryset:
+        serializer = AuthorSimpleSerializer(record)
+        data = serializer.data
+        if user_pk is not None:
+            data['inFollowers'] = record.followers.filter(pk=user_pk).exists()
+        response['results'].append(data)
+    return Response(response, status=status.HTTP_200_OK)
 
-    def get(self, request):
-        search = request.GET.get('search')
-        if search is not None:
-            self.queryset = self.queryset.annotate(fullname=Concat('user__first_name', Value(' '), 'user__last_name'),
-                                                   similarity=Greatest(
-                                                       TrigramSimilarity('fullname', search),
-                                                       TrigramSimilarity('nickname', search)
-                                                   )).filter(similarity__gte=0.1).order_by('-similarity')
-        return self.list(request)
 
-
-class UserProfileView(generics.GenericAPIView, mixins.RetrieveModelMixin):
-
-    serializer_class = UserProfileSerializer
-    authentication_classes = []
-    permission_classes = []
-    queryset = User.objects.all()
-
-    def get(self, request, pk):
-        return self.retrieve(request, pk)
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def user_profile(request, pk):
+    user_pk = request.GET.get('user')
+    user = User.objects.get(pk=pk)
+    serializer = UserProfileSerializer(user)
+    if user_pk is not None:
+        serializer.data['author']['inFollowers'] = user.author.followers.filter(pk=user_pk).exists()
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])

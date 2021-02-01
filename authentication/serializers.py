@@ -4,6 +4,8 @@ from rest_framework.serializers import ModelSerializer, ReadOnlyField
 
 class AuthorSerializer(ModelSerializer):
 
+    followers = ReadOnlyField(source='followers_count')
+
     class Meta:
         fields = '__all__'
         model = Author
@@ -34,6 +36,7 @@ class UserSimpleSerializer(ModelSerializer):
 class AuthorSimpleSerializer(ModelSerializer):
 
     user = UserSimpleSerializer()
+    followers = ReadOnlyField(source='followers_count')
 
     class Meta:
         fields = ['user', 'nickname', 'followers']
@@ -43,6 +46,7 @@ class AuthorSimpleSerializer(ModelSerializer):
 class AuthorProfileSerializer(ModelSerializer):
 
     stories = ReadOnlyField(source='stories_no')
+    followers = ReadOnlyField(source='followers_count')
 
     class Meta:
         fields = ['nickname', 'followers', 'stories', 'social']

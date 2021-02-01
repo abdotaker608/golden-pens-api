@@ -36,14 +36,16 @@ class StoryCreationView(generics.GenericAPIView, mixins.CreateModelMixin, mixins
         return self.retrieve(request, pk)
 
 
-class StoryOverview(generics.GenericAPIView, mixins.RetrieveModelMixin):
-    serializer_class = StorySerializer
-    queryset = Story.objects.all()
-    permission_classes = []
-    authentication_classes = []
-
-    def get(self, request, pk):
-        return self.retrieve(request, pk)
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def story_overview(request, pk):
+    user_pk = request.GET.get('user')
+    story = Story.objects.get(id=pk)
+    serializer = StorySerializer(story)
+    if user_pk is not None:
+        serializer.data['author']['inFollowers'] = story.author.followers.filter(pk=user_pk).exists()
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class ChaptersOverview(generics.GenericAPIView, mixins.ListModelMixin):
@@ -57,14 +59,18 @@ class ChaptersOverview(generics.GenericAPIView, mixins.ListModelMixin):
         return self.list(request)
 
 
-class ChapterView(generics.GenericAPIView, mixins.RetrieveModelMixin):
-    serializer_class = ChapterSerializer
-    queryset = Chapter.objects.all()
-    authentication_classes = []
-    permission_classes = []
-
-    def get(self, request, pk):
-        return self.retrieve(request, pk)
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def chapter_view(request, pk):
+    user_pk = request.GET.get('user')
+    chapter = Chapter.objects.get(id=pk)
+    serializer = ChapterSerializer(chapter)
+    data = serializer.data
+    if user_pk is not None:
+        data['loved'] = chapter.loves.filter(pk=user_pk).exists()
+        data['story']['author']['inFollowers'] = chapter.story.author.followers.filter(pk=user_pk).exists()
+    return Response(data, status=status.HTTP_200_OK)
 
 
 class ChapterCreationView(generics.GenericAPIView, mixins.CreateModelMixin, mixins.UpdateModelMixin,
