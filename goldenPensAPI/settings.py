@@ -197,6 +197,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS')
 AWS_STORAGE_BUCKET_NAME = 'golden-pens-storage'
+AWS_QUERYSTRING_AUTH = False
+AWS_QUERYSTRING_EXPIRE = False
 
 # Custom Configs
 CURRENT_FRONTEND_HOST = 'https://determined-colden-c322cd.netlify.app'
