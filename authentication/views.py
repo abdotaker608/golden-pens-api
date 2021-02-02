@@ -290,7 +290,7 @@ def authors_list(request):
                    (page - 1) * size:page * size]
     else:
         queryset = Author.objects.annotate(top=Count('followers'), stories_no=Count('stories')). \
-                       filter(stories_no__gte=1).order_by('-top')[(page - 1) * size:page * size]
+                       filter(stories_no__gte=0).order_by('-top')[(page - 1) * size:page * size]
     count = Author.objects.count()
     total = count % size == 0 and count // size or (count // size) + 1
     response = {'total': total, 'results': []}
