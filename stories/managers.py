@@ -11,7 +11,7 @@ class StoryManager(models.Manager):
     def find(self, search=None, cat=None, sub_cat=None, sub_cat_ar=None, sort='-created',
              follower_pk=None, author_id=None):
 
-        queryset = self.model.objects.all()
+        queryset = self.model.objects
 
         if author_id is not None:
             queryset = queryset.filter(author__pk=author_id)
@@ -48,19 +48,17 @@ class StoryManager(models.Manager):
 
         if sort == 'relevance':
             if search is not None or sub_cat is not None:
-                queryset = queryset.order_by('-similarity', '-name_similarity')
+                return queryset.order_by('-similarity', '-name_similarity')
             else:
-                queryset = queryset.order_by('-created')
+                return queryset.order_by('-created')
         elif sort == 'mostViewed':
-            queryset = queryset.annotate(trend=Count('chapters__views')).order_by('-trend', '-created')
+            return queryset.annotate(trend=Count('chapters__views')).order_by('-trend', '-created')
         elif sort == 'trending':
             expired = datetime.date.today() - datetime.timedelta(days=7)
-            queryset = queryset.filter(created__date__gte=expired).\
+            return queryset.filter(created__date__gte=expired).\
                 annotate(trend=Count('chapters__views')).order_by('-trend', '-created')
         else:
-            queryset = queryset.order_by(sort)
-
-        return queryset
+            return queryset.order_by(sort)
 
     def trending(self, limit=None):
         expired = datetime.date.today() - datetime.timedelta(days=7)
