@@ -12,7 +12,7 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = ['first_name', 'last_name', 'pk', 'email', 'author__nickname']
     list_display = ['pk', 'get_full_name', 'get_author_nickname', 'get_followers_count']
     inlines = [AuthorInline]
-    ordering = ('get_followers_count', )
+    ordering = ('author__followers_count', )
 
     def get_full_name(self, instance):
         return f'{instance.first_name} {instance.last_name}'
