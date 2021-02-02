@@ -205,7 +205,7 @@ if not DEBUG:
     AWS_QUERYSTRING_EXPIRE = False
 
 # Custom Configs
-PROD_HOST = 'https://musing-archimedes-08b9fb.netlify.app/terms'
+PROD_HOST = 'https://musing-archimedes-08b9fb.netlify.app'
 LOCAL_HOST = 'http://localhost:3000'
 CURRENT_FRONTEND_HOST = DEBUG and PROD_HOST or LOCAL_HOST
 
