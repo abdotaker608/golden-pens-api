@@ -207,7 +207,7 @@ if not DEBUG:
 # Custom Configs
 PROD_HOST = 'https://musing-archimedes-08b9fb.netlify.app'
 LOCAL_HOST = 'http://localhost:3000'
-CURRENT_FRONTEND_HOST = DEBUG and PROD_HOST or LOCAL_HOST
+CURRENT_FRONTEND_HOST = DEBUG and LOCAL_HOST or PROD_HOST
 
 # Admins Config
 ADMINS = [('Eldababa', 'abdotaker608@gmail.com')]
