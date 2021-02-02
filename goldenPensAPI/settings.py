@@ -143,7 +143,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # CORS configs
 CORS_ALLOWED_ORIGINS = [
-    'https://determined-colden-c322cd.netlify.app',
+    'https://musing-archimedes-08b9fb.netlify.app',
 ]
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
@@ -205,7 +205,7 @@ if not DEBUG:
     AWS_QUERYSTRING_EXPIRE = False
 
 # Custom Configs
-PROD_HOST = 'https://determined-colden-c322cd.netlify.app'
+PROD_HOST = 'https://musing-archimedes-08b9fb.netlify.app/terms'
 LOCAL_HOST = 'http://localhost:3000'
 CURRENT_FRONTEND_HOST = DEBUG and PROD_HOST or LOCAL_HOST
 
