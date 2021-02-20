@@ -144,6 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # CORS configs
 CORS_ALLOWED_ORIGINS = [
     'https://musing-archimedes-08b9fb.netlify.app',
+    'https://blissful-torvalds-319702.netlify.app',
 ]
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
