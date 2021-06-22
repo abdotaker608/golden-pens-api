@@ -196,10 +196,12 @@ def update_user(request, pk):
     last_name = request.data['last_name']
     user = User.objects.get(pk=pk)
 
-    if user.social_id is not None or not validate_auth(request, pk, 'user'):
+    if validate_auth(request, pk, 'user'):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
     if user.email != email:
+        if user.social_id is not None:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         if User.objects.filter(email=email).exists():
             return Response({"message": "emailExists", "status": 400}, status=status.HTTP_400_BAD_REQUEST)
         with atomic():
