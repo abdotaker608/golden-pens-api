@@ -2,7 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fadff15e-751f-44b5-95b5-2261f14ebc30" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/goldenPensAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/goldenPensAPI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/managers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/migrations/0002_auto_20210102_1532.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/migrations/0002_auto_20210102_1532.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/migrations/0003_auto_20210117_1632.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/migrations/0003_auto_20210117_1632.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/pagination.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/pagination.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goldenPensAPI/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/goldenPensAPI/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goldenPensAPI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/goldenPensAPI/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goldenPensAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/goldenPensAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goldenPensAPI/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/goldenPensAPI/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/defaults.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/defaults.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/managers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0002_auto_20210102_1555.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0002_auto_20210102_1555.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0003_auto_20210102_1603.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0003_auto_20210102_1603.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0004_story_arr.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0004_story_arr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0005_remove_story_arr.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0005_remove_story_arr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0006_auto_20210105_1558.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0006_auto_20210105_1558.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0007_auto_20210105_1559.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0007_auto_20210105_1559.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0008_auto_20210105_1804.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0008_auto_20210105_1804.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0009_auto_20210105_1805.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0009_auto_20210105_1805.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0010_auto_20210113_1351.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0010_auto_20210113_1351.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0011_auto_20210117_1632.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0011_auto_20210117_1632.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0012_auto_20210121_1650.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0012_auto_20210121_1650.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0013_auto_20210126_1938.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0013_auto_20210126_1938.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/migrations/0014_auto_20210131_2128.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/migrations/0014_auto_20210131_2128.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/pagination.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/pagination.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stories/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stories/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/email_verify.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/email_verify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/new_email_verify.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/new_email_verify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/request_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/request_reset.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +85,12 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -53,6 +107,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -65,23 +120,5 @@
       <updated>1606925646068</updated>
     </task>
     <servers />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1613658356640">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1613658356640" />
-    <state x="184" y="7" key="SettingsEditor" timestamp="1612186741245">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1612186741245" />
-    <state x="378" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1613658271757">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="378" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1613658271757" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1611583644725">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1611583644725" />
   </component>
 </project>

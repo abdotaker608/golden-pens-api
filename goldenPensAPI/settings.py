@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'corsheaders',
+    'cloudinary_storage',
+    'cloudinary',
     'rest_framework',
     'rest_framework.authtoken',
     'authentication',
@@ -138,8 +140,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/gp/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'gp')
 
 # CORS configs
 CORS_ALLOWED_ORIGINS = [
@@ -197,13 +199,13 @@ if not DEBUG:
     # DROPBOX_OAUTH2_TOKEN = os.getenv('DROPBOX_AUTH_TOKEN')
     # DROPBOX_WRITE_MODE = 'overwrite'
 
-    # AWS S3
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS')
-    AWS_STORAGE_BUCKET_NAME = 'golden-pens-storage'
-    AWS_QUERYSTRING_AUTH = False
-    AWS_QUERYSTRING_EXPIRE = False
+    # CLOUDINARY
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    CLOUDINARY_STORAGE = {
+        "CLOUD_NAME": os.getenv('CLOUDINARY_CLOUD_NAME'),
+        "API_KEY": os.getenv('CLOUDINARY_API_KEY'),
+        "API_SECRET": os.getenv('CLOUDINARY_API_SECRET')
+    }
 
 # Custom Configs
 PROD_HOST = 'https://musing-archimedes-08b9fb.netlify.app'
