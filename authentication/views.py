@@ -196,7 +196,7 @@ def update_user(request, pk):
     last_name = request.data['last_name']
     user = User.objects.get(pk=pk)
 
-    if validate_auth(request, pk, 'user'):
+    if not validate_auth(request, pk, 'user'):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
     if user.email != email:
